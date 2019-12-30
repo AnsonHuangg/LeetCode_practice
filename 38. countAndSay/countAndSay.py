@@ -1,15 +1,38 @@
 #class Solution:
 #    def countAndSay(self, n: int) -> str:
+n=5
 
-a = 0
+a = 1
 ans = 1
+count = 1
+
+
 while a<n:
-    while ans/10!=0:
+    ans_buf = 0
+    sig_diff = 0
+    while ans%10!=0:
+        #print("第%d輪"%(a))
         buf1 = ans % 10
-        ans = ans / 10
+        ans = ans // 10
         buf2 = ans % 10
-    
+        #print("buf1=%d"%buf1)
+        #print("ans=%d"%ans)
+        #print("buf2=%d"%buf2)
+        #print("ans_buf=%d"%ans_buf)
+        if buf2==buf1:
+            count += 1
+        else:
+            ans_buf = ans_buf + (100**sig_diff)*(buf1+10*count)
+            count = 1
+            ans = ans_buf
+            sig_diff += 1
+            if buf2==0:
+                #print("ans=%d"%ans)
+                break
+            #else:
+            #    continue
     a += 1
+print(ans)
 
 
 
