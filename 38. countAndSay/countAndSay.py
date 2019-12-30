@@ -1,101 +1,24 @@
-#class Solution:
-#    def countAndSay(self, n: int) -> str:
-n=5
-
-a = 1
-ans = 1
-count = 1
-
-
-while a<n:
-    ans_buf = 0
-    sig_diff = 0
-    while ans%10!=0:
-        #print("第%d輪"%(a))
-        buf1 = ans % 10
-        ans = ans // 10
-        buf2 = ans % 10
-        #print("buf1=%d"%buf1)
-        #print("ans=%d"%ans)
-        #print("buf2=%d"%buf2)
-        #print("ans_buf=%d"%ans_buf)
-        if buf2==buf1:
-            count += 1
-        else:
-            ans_buf = ans_buf + (100**sig_diff)*(buf1+10*count)
-            count = 1
+class Solution:
+    def countAndSay(self, n: int) -> str:
+        a = 1
+        ans = 1
+        count = 1
+        while a<n:
+            ans_buf = 0
+            sig_diff = 0
+            while ans%10!=0:
+                buf1 = ans % 10
+                ans = ans // 10
+                buf2 = ans % 10
+                if buf2==buf1:
+                    count += 1
+                else:
+                    ans_buf = ans_buf + (100**sig_diff)*(buf1+10*count)
+                    count = 1
+                    sig_diff += 1
+                    if buf2==0:
+                        break
             ans = ans_buf
-            sig_diff += 1
-            if buf2==0:
-                #print("ans=%d"%ans)
-                break
-            #else:
-            #    continue
-    a += 1
-print(ans)
-
-
-
-
-"""        
-        if n==1:
-            return "1"
-        elif n==2:
-            return "11"
-        elif n==3:
-            return "21"
-        elif n==4:
-            return "1211"
-        elif n==5:
-            return "111221"
-        elif n==6:
-            return "312211"
-        elif n==7:
-            return "13112221"
-        elif n==8:
-            return "1113213211"
-        elif n==9:
-            return "31131211131221"
-        elif n==10:
-            return "13211311123113112211"
-        elif n==11:
-            return "11131221133112132113212221"
-        elif n==12:
-            return "3113112221232112111312211312113211"
-        elif n==13:
-            return "1321132132111213122112311311222113111221131221"
-        elif n==14:
-            return "11131221131211131231121113112221121321132132211331222113112211"
-        elif n==15:
-            return "311311222113111231131112132112311321322112111312211312111322212311322113212221"
-        elif n==16:
-            return "132113213221133112132113311211131221121321131211132221123113112221131112311332111213211322211312113211"
-        elif n==17:
-            return "11131221131211132221232112111312212321123113112221121113122113111231133221121321132132211331121321231231121113122113322113111221131221"
-        elif n==18:
-            return "31131122211311123113321112131221123113112211121312211213211321322112311311222113311213212322211211131221131211132221232112111312111213111213211231131122212322211331222113112211"
-        elif n==19:
-            return ""
-        elif n==20:
-            return "11131221131211132221232112111312111213111213211231132132211211131221131211221321123113213221123113112221131112311332211211131221131211132211121312211231131112311211232221121321132132211331121321231231121113112221121321133112132112312321123113112221121113122113121113123112112322111213211322211312113211"
-        elif n==21:
-            return ""
-        elif n==22:
-            return ""
-        elif n==23:
-            return ""
-        elif n==24:
-            return ""
-        elif n==25:
-            return ""
-        elif n==26:
-            return ""
-        elif n==27:
-            return ""
-        elif n==28:
-            return ""
-        elif n==29:
-            return ""
-        elif n==30:
-            return ""
-"""
+            a += 1
+        answer = str(ans)
+        return answer
